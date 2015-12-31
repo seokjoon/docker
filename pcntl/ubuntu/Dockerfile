@@ -10,6 +10,8 @@ ADD pcntl.so /usr/lib/php5/20121212/pcntl.so
 RUN echo "extension=pcntl.so" > /etc/php5/mods-available/pcntl.ini
 RUN ln -s /etc/php5/mods-available/pcntl.ini /etc/php5/apache2/conf.d/20-pcntl.ini
 RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
+WORKDIR /etc/apache2
+RUN sed -i "s/AllowOverride None/AllowOverride ALL/g" apache2.conf
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
