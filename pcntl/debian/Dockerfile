@@ -6,7 +6,7 @@ RUN apt-get update && apt-get -y install apache2 php5 php5-gd php5-mysql mysql-c
 ##pcntl
 WORKDIR /etc/php5/apache2
 RUN sed -i "s/disable_functions/;disable_functions/g" php.ini
-ADD pcntl.so /usr/lib/php5/20121212/pcntl.so
+ADD pcntl.so /usr/lib/php5/20131226/pcntl.so
 RUN echo "extension=pcntl.so" > /etc/php5/mods-available/pcntl.ini
 RUN ln -s /etc/php5/mods-available/pcntl.ini /etc/php5/apache2/conf.d/20-pcntl.ini
 ##mod_rewrite
