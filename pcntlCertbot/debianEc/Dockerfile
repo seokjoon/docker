@@ -47,11 +47,11 @@ ADD kilmeny.conf /etc/apache2/sites-available/kilmeny.conf
 RUN ln -s /etc/apache2/sites-available/joomla.conf /etc/apache2/sites-enabled/joomla.conf
 RUN ln -s /etc/apache2/sites-available/kilmeny.conf /etc/apache2/sites-enabled/kilmeny.conf
 
-#CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 ##certbot
 ENTRYPOINT ["/usr/local/bin/certbot"]
 CMD ["config_changes", "--no-self-upgrade"]
 ##certbot
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
 EXPOSE 80
 EXPOSE 443
