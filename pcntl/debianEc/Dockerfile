@@ -6,6 +6,10 @@ RUN apt-get update && apt-get -y install apache2 php5 php5-gd php5-mysql mysql-c
 ##ssl
 RUN a2enmod ssl
 RUN a2ensite default-ssl
+RUN mkdir /etc/apache2/ssl
+ADD apache.crt /etc/apache2/ssl
+ADD apache.key /etc/apache2/ssl
+RUN chmod 600 /etc/apache2/ssl/*
 
 ##timezone KST
 WORKDIR /etc/php5/apache2
