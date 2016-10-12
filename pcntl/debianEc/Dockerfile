@@ -10,10 +10,11 @@ RUN mkdir /etc/apache2/ssl
 #ADD apache.crt /etc/apache2/ssl
 #ADD apache.key /etc/apache2/ssl
 #RUN chmod 600 /etc/apache2/ssl/*
-RUN rm /etc/apache2/sites-enabled/default-ssl.conf
-ADD default-ssl.conf /etc/apache2/sites-enabled/default-ssl.conf
-RUN rm /etc/apache2/sites-enabled/000-default.conf
-ADD 000-default.conf /etc/apache2/sites-enabled/000-default.conf
+#
+#RUN rm /etc/apache2/sites-available/000-default.conf
+#ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
+RUN rm /etc/apache2/sites-available/default-ssl.conf
+ADD default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 
 ##timezone KST
 WORKDIR /etc/php5/apache2
