@@ -7,12 +7,8 @@ RUN apt-get update && apt-get -y install apache2 php5 php5-gd php5-mysql mysql-c
 RUN a2enmod ssl
 RUN a2ensite default-ssl
 RUN mkdir /etc/apache2/ssl
-#ADD apache.crt /etc/apache2/ssl
-#ADD apache.key /etc/apache2/ssl
-#RUN chmod 600 /etc/apache2/ssl/*
-#
-#RUN rm /etc/apache2/sites-available/000-default.conf
-#ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
+RUN rm /etc/apache2/sites-available/000-default.conf
+ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN rm /etc/apache2/sites-available/default-ssl.conf
 ADD default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 
