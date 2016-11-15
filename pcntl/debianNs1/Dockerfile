@@ -31,6 +31,8 @@ RUN sed -i "s/AllowOverride None/AllowOverride ALL/g" apache2.conf
 ##virtual host
 ADD ns1.conf /etc/apache2/sites-available/ns1.conf
 RUN ln -s /etc/apache2/sites-available/ns1.conf /etc/apache2/sites-enabled/ns1.conf
+ADD neostation.conf /etc/apache2/sites-available/neostation.conf
+RUN ln -s /etc/apache2/sites-available/neostation.conf /etc/apache2/sites-enabled/neostation.conf
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
