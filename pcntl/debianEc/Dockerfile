@@ -1,7 +1,7 @@
 FROM debian:8
 MAINTAINER Seok Joon Lee <seokjoon@gmail.com>
 
-RUN apt-get update && apt-get -y install apache2 php5 php5-gd php5-mysql mysql-client php5-gearman libcurl3-gnutls php5-curl && apt-get clean
+RUN apt-get update && apt-get -y install apache2 php5 php5-gd php5-mysql mysql-client php5-gearman libcurl3-gnutls php5-curl php5-mcrypt && apt-get clean
 
 ##ssl
 RUN a2enmod ssl
