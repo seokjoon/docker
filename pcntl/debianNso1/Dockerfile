@@ -4,13 +4,13 @@ MAINTAINER Seok Joon Lee <seokjoon@gmail.com>
 RUN apt-get update && apt-get -y install apache2 php5 php5-gd php5-mysql mysql-client php5-gearman libcurl3-gnutls php5-curl php5-mcrypt && apt-get clean
 
 ##ssl
-RUN a2enmod ssl
-RUN a2ensite default-ssl
-RUN mkdir /etc/apache2/ssl
-RUN rm /etc/apache2/sites-available/000-default.conf
-ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
-RUN rm /etc/apache2/sites-available/default-ssl.conf
-ADD default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
+#RUN a2enmod ssl
+#RUN a2ensite default-ssl
+#RUN mkdir /etc/apache2/ssl
+#RUN rm /etc/apache2/sites-available/000-default.conf
+#ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
+#RUN rm /etc/apache2/sites-available/default-ssl.conf
+#ADD default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 
 ##timezone KST
 WORKDIR /etc/php5/apache2
