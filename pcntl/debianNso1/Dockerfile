@@ -31,10 +31,10 @@ RUN sed -i "s/AllowOverride None/AllowOverride ALL/g" apache2.conf
 ##virtual host
 ADD nso1.conf /etc/apache2/sites-available/nso1.conf
 RUN ln -s /etc/apache2/sites-available/nso1.conf /etc/apache2/sites-enabled/nso1.conf
-#ADD wafle.conf /etc/apache2/sites-available/wafle.conf
-#RUN ln -s /etc/apache2/sites-available/wafle.conf /etc/apache2/sites-enabled/wafle.conf
-#ADD wafleCoKr.conf /etc/apache2/sites-available/wafleCoKr.conf
-#RUN ln -s /etc/apache2/sites-available/wafleCoKr.conf /etc/apache2/sites-enabled/wafleCoKr.conf
+ADD wafle.conf /etc/apache2/sites-available/wafle.conf
+RUN ln -s /etc/apache2/sites-available/wafle.conf /etc/apache2/sites-enabled/wafle.conf
+ADD wafleCoKr.conf /etc/apache2/sites-available/wafleCoKr.conf
+RUN ln -s /etc/apache2/sites-available/wafleCoKr.conf /etc/apache2/sites-enabled/wafleCoKr.conf
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
