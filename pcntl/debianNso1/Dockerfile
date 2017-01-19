@@ -33,6 +33,8 @@ ADD wafle.conf /etc/apache2/sites-available/wafle.conf
 RUN ln -s /etc/apache2/sites-available/wafle.conf /etc/apache2/sites-enabled/wafle.conf
 ADD wafleCoKr.conf /etc/apache2/sites-available/wafleCoKr.conf
 RUN ln -s /etc/apache2/sites-available/wafleCoKr.conf /etc/apache2/sites-enabled/wafleCoKr.conf
+ADD nso1Wafle.conf /etc/apache2/sites-available/nso1Wafle.conf
+RUN ln -s /etc/apache2/sites-available/nso1Wafle.conf /etc/apache2/sites-enabled/nso1Wafle.conf
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
