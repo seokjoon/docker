@@ -15,6 +15,8 @@ RUN apt-get update && apt-get -y install apache2 php5 php5-gd php5-mysql mysql-c
 ##timezone KST
 WORKDIR /etc/php5/apache2
 RUN sed -i "s/;date.timezone =/date.timezone = Asia\/Seoul/g" php.ini
+RUN sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 10M/g" php.ini
+RUN sed -i "s/post_max_size = 8M/post_max_size = 10M/g" php.ini
 
 ##pcntl
 WORKDIR /etc/php5/apache2
