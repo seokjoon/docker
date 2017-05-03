@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER Seok Joon Lee <seokjoon@gmail.com>
 
-RUN add-apt-repository -y ppa:ondrej/php
+RUN add-apt-repository -y "ppa:ondrej/php"
 RUN apt-get update && apt-get -y install php php7.0 php7.0-gd php7.0-mysql mysql-client php7.0-curl php7.0-mcrypt apache2 php-gearman && apt-get clea
 
 ##ssl
