@@ -3,6 +3,7 @@ MAINTAINER Seok Joon Lee <seokjoon@gmail.com>
 
 ## php-gearman
 #RUN apt-get update && apt-get -y install software-properties-common && add-apt-repository -y ppa:ondrej/php
+RUN apt-get update && apt-get -y install sudo
 WORKDIR /etc/apt/sources.list.d
 RUN echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main" > ondrej-ubuntu-php-xenial.list
 RUN gpg --keyserver keyserver.ubuntu.com --recv 4F4EA0AAE5267A6C
