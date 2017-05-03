@@ -10,7 +10,7 @@ RUN gpg --keyserver keyserver.ubuntu.com --recv 4F4EA0AAE5267A6C
 RUN gpg --export --armor 4F4EA0AAE5267A6C | sudo apt-key add -
 
 ## apache2 & php7
-RUN apt-get update && apt-get -y install php php7.1 php7.1-gd php7.1-mysql mysql-client php7.1-curl php7.1-mcrypt php7.1-xml apache2 php-gearman && apt-get clean
+RUN apt-get update && apt-get -y install php php7.0 php7.0-gd php7.0-mysql mysql-client php7.0-curl php7.0-mcrypt php7.0-xml apache2 php-gearman && apt-get clean
 
 ##ssl
 RUN a2enmod ssl
@@ -22,11 +22,11 @@ RUN rm /etc/apache2/sites-available/default-ssl.conf
 ADD default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 
 ##timezone KST
-WORKDIR /etc/php/7.1/apache2
+WORKDIR /etc/php/7.0/apache2
 RUN sed -i "s/;date.timezone =/date.timezone = Asia\/Seoul/g" php.ini
 
 ##pcntl
-WORKDIR /etc/php/7.1/apache2
+WORKDIR /etc/php/7.0/apache2
 RUN sed -i "s/disable_functions/;disable_functions/g" php.ini
 
 ##mod_rewrite
