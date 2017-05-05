@@ -4,6 +4,11 @@ MAINTAINER Seok Joon Lee <seokjoon@gmail.com>
 ## apache2 & php7
 RUN apt-get update && apt-get -y install php php7.0 php7.0-gd php7.0-mysql mysql-client php7.0-curl php7.0-mcrypt php7.0-xml apache2 php-gearman php-mbstring php-zip && apt-get clean
 
+## composer
+RUN apt-get -y install curl && apt-get clean
+RUN curl -sS https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/bin/composer
+
 ##ssl
 RUN a2enmod ssl
 RUN a2ensite default-ssl
