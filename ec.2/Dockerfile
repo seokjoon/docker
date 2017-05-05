@@ -41,3 +41,5 @@ CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
 EXPOSE 80
 EXPOSE 443
+##laravel
+EXPOSE 8000
