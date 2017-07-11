@@ -42,13 +42,17 @@ RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rew
 WORKDIR /etc/apache2
 RUN sed -i "s/AllowOverride None/AllowOverride ALL/g" apache2.conf
 
-##virtual host
+## virtual host
 ADD wafle.conf /etc/apache2/sites-available/wafle.conf
 RUN ln -s /etc/apache2/sites-available/wafle.conf /etc/apache2/sites-enabled/wafle.conf
 ADD wafleCoKr.conf /etc/apache2/sites-available/wafleCoKr.conf
 RUN ln -s /etc/apache2/sites-available/wafleCoKr.conf /etc/apache2/sites-enabled/wafleCoKr.conf
 ADD nso1Wafle.conf /etc/apache2/sites-available/nso1Wafle.conf
 RUN ln -s /etc/apache2/sites-available/nso1Wafle.conf /etc/apache2/sites-enabled/nso1Wafle.conf
+
+## mpm_prefork_module
+RUN rm /etc/apache2/mods-available/mpm_prefork.conf
+ADD mpm_prefork.conf /etc/apache2/mods-available/mpm_prefork.conf
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
