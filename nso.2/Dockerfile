@@ -49,6 +49,8 @@ ADD wafleCoKr.conf /etc/apache2/sites-available/wafleCoKr.conf
 RUN ln -s /etc/apache2/sites-available/wafleCoKr.conf /etc/apache2/sites-enabled/wafleCoKr.conf
 ADD nso1Wafle.conf /etc/apache2/sites-available/nso1Wafle.conf
 RUN ln -s /etc/apache2/sites-available/nso1Wafle.conf /etc/apache2/sites-enabled/nso1Wafle.conf
+ADD imgWafle.conf /etc/apache2/sites-available/imgWafle.conf
+RUN ln -s /etc/apache2/sites-available/imgWafle.conf /etc/apache2/sites-enabled/imgWafle.conf
 
 ## mpm_prefork_module
 RUN rm /etc/apache2/mods-available/mpm_prefork.conf
