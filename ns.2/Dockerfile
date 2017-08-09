@@ -40,6 +40,8 @@ ADD ns1.conf /etc/apache2/sites-available/ns1.conf
 RUN ln -s /etc/apache2/sites-available/ns1.conf /etc/apache2/sites-enabled/ns1.conf
 ADD neostation.conf /etc/apache2/sites-available/neostation.conf
 RUN ln -s /etc/apache2/sites-available/neostation.conf /etc/apache2/sites-enabled/neostation.conf
+ADD imgNeostation.conf /etc/apache2/sites-available/imgNeostation.conf
+RUN ln -s /etc/apache2/sites-available/imgNeostation.conf /etc/apache2/sites-enabled/imgNeostation.conf
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
