@@ -37,10 +37,13 @@ RUN sed -i "s/post_max_size = 8M/post_max_size = 10M/g" php.ini
 WORKDIR /etc/php/7.0/apache2
 RUN sed -i "s/disable_functions/;disable_functions/g" php.ini
 
-##mod_rewrite
+## mod_rewrite
 RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
 WORKDIR /etc/apache2
 RUN sed -i "s/AllowOverride None/AllowOverride ALL/g" apache2.conf
+
+## mod_expires
+RUN a2enmod expires
 
 ## virtual host
 ADD wafle.conf /etc/apache2/sites-available/wafle.conf
