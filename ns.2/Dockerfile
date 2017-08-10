@@ -36,7 +36,7 @@ WORKDIR /etc/apache2
 RUN sed -i "s/AllowOverride None/AllowOverride ALL/g" apache2.conf
 
 ## mod_expires
-RUN ln -s /etc/apache2/mods-available/expires.load /etc/apache2/mods-enabled/expires.load
+RUN a2enmod expires
 
 ##virtual host
 ADD ns1.conf /etc/apache2/sites-available/ns1.conf
