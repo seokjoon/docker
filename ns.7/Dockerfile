@@ -18,6 +18,9 @@ RUN source $NVM_DIR/nvm.sh \
     && nvm use default
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+
+##RUN apt-get install -y npm
+
 RUN node -v
 RUN npm -v
 
