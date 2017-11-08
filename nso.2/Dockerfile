@@ -14,9 +14,11 @@ RUN apt-get -y install jpegoptim optipng pngquant gifsicle && apt-get clean
 
 ## PageSpeed
 WORKDIR /tmp
+RUN apt-get install -y wget
 RUN wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-beta_current_amd64.deb
 RUN dpkg -i mod-pagespeed-*.deb
 RUN apt-get -f install && apt-get clean
+RUN rm mod-pagespeed-*.deb
 #service apache2 restart
 #service apache2 reload
 
