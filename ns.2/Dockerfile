@@ -9,6 +9,10 @@ RUN apt-get -y install curl && apt-get clean
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/bin/composer
 
+## nodejs
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN apt-get install -y nodejs && apt-get clean
+
 ## gif: https://github.com/spatie/image-optimizer
 RUN apt-get -y install jpegoptim optipng pngquant gifsicle && apt-get clean
 
@@ -64,4 +68,6 @@ RUN ln -s /etc/apache2/sites-available/imgNeostation.conf /etc/apache2/sites-ena
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
 EXPOSE 80
+EXPOSE 8080
+EXPOSE 8088
 EXPOSE 443
