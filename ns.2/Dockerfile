@@ -12,6 +12,7 @@ RUN mv composer.phar /usr/bin/composer
 ## nodejs
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs && apt-get clean
+RUN a2enmod headers
 
 ## gif: https://github.com/spatie/image-optimizer
 RUN apt-get -y install jpegoptim optipng pngquant gifsicle && apt-get clean
