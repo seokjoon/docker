@@ -17,17 +17,17 @@ RUN a2enmod headers
 ## gif: https://github.com/spatie/image-optimizer
 RUN apt-get -y install jpegoptim optipng pngquant gifsicle && apt-get clean
 
-## PageSpeed
-WORKDIR /tmp
-RUN apt-get install -y wget
-RUN wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-beta_current_amd64.deb
-RUN dpkg -i mod-pagespeed-*.deb
-#ADD pagespeed.conf /etc/apache2/mods-available/pagespeed.conf
-RUN sed -i "s/\# ModPagespeedRewriteLevel PassThrough/ModPagespeedRewriteLevel OptimizeForBandwidth/g" /etc/apache2/mods-available/pagespeed.conf
-RUN apt-get -f install && apt-get clean
-RUN rm mod-pagespeed-*.deb
-#service apache2 restart
-#service apache2 reload
+# ## PageSpeed
+# WORKDIR /tmp
+# RUN apt-get install -y wget
+# RUN wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-beta_current_amd64.deb
+# RUN dpkg -i mod-pagespeed-*.deb
+# #ADD pagespeed.conf /etc/apache2/mods-available/pagespeed.conf
+# RUN sed -i "s/\# ModPagespeedRewriteLevel PassThrough/ModPagespeedRewriteLevel OptimizeForBandwidth/g" /etc/apache2/mods-available/pagespeed.conf
+# RUN apt-get -f install && apt-get clean
+# RUN rm mod-pagespeed-*.deb
+# #service apache2 restart
+# #service apache2 reload
 
 ## ssl
 #RUN a2enmod ssl
