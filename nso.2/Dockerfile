@@ -9,6 +9,9 @@ RUN apt-get -y install curl && apt-get clean
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/bin/composer
 
+## CORS
+RUN a2enmod headers
+
 ## gif: https://github.com/spatie/image-optimizer
 RUN apt-get -y install jpegoptim optipng pngquant gifsicle && apt-get clean
 
