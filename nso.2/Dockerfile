@@ -1,4 +1,4 @@
-FROM ubuntu:17.04
+FROM ubuntu:17.10
 MAINTAINER Seok Joon Lee <seokjoon@gmail.com>
 
 ## apache2 & php7
