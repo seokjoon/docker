@@ -69,8 +69,8 @@ ADD imgWafle.conf /etc/apache2/sites-available/imgWafle.conf
 RUN ln -s /etc/apache2/sites-available/imgWafle.conf /etc/apache2/sites-enabled/imgWafle.conf
 
 ## mpm_prefork_module
-RUN rm /etc/apache2/mods-available/mpm_prefork.conf
-ADD mpm_prefork.conf /etc/apache2/mods-available/mpm_prefork.conf
+#RUN rm /etc/apache2/mods-available/mpm_prefork.conf
+#ADD mpm_prefork.conf /etc/apache2/mods-available/mpm_prefork.conf
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
