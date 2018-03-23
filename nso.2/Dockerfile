@@ -1,8 +1,8 @@
-FROM ubuntu:17.10
+FROM ubuntu:17.04
 MAINTAINER Seok Joon Lee <seokjoon@gmail.com>
 
 ## apache2 & php7
-RUN apt-get update && apt-get -y install php php7.0 php7.0-gd php7.0-mysql mysql-client php7.0-curl php7.0-mcrypt php7.0-xml apache2 php-gearman php-mbstring php-zip php-imagick && apt-get clean
+RUN apt-get update && apt-get -y install php php7.1 php7.1-gd php7.1-mysql mysql-client php7.1-curl php7.1-mcrypt php7.1-xml apache2 php-gearman php-mbstring php-zip php-imagick && apt-get clean
 
 ## composer
 RUN apt-get -y install curl && apt-get clean
