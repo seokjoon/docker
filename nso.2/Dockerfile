@@ -37,17 +37,17 @@ RUN rm /etc/apache2/sites-available/default-ssl.conf
 ADD default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 
 ## timezone KST
-WORKDIR /etc/php/7.0/apache2
+WORKDIR /etc/php/7.1/apache2
 RUN sed -i "s/;date.timezone =/date.timezone = Asia\/Seoul/g" php.ini
 
 ## upload size
-WORKDIR /etc/php/7.0/apache2
+WORKDIR /etc/php/7.1/apache2
 RUN sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 10M/g" php.ini
 RUN sed -i "s/post_max_size = 8M/post_max_size = 60M/g" php.ini
 RUN sed -i "s/max_execution_time = 30/max_execution_time = 300/g" php.ini
 
 ## pcntl
-WORKDIR /etc/php/7.0/apache2
+WORKDIR /etc/php/7.1/apache2
 RUN sed -i "s/disable_functions/;disable_functions/g" php.ini
 
 ## mod_rewrite
