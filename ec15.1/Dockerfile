@@ -11,6 +11,10 @@ RUN apt-get -y install curl && apt-get clean
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/bin/composer
 
+## nodejs
+#curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+apt-get -y install nodejs && apt-get clean
+
 ## CORS
 RUN a2enmod headers
 
@@ -33,7 +37,19 @@ RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rew
 WORKDIR /etc/apache2
 RUN sed -i "s/AllowOverride None/AllowOverride ALL/g" apache2.conf
 
+## debugger
+RUN apt-get -y install php-xdebug && apt-get clean
+#RUN echo "xdebug.remote_enable=on" >> /etc/php/7.2/mods-available/xdebug.ini
+#RUN echo "xdebug.remote_port=9000" >> /etc/php/7.2/mods-available/xdebug.ini
+#RUN echo "xdebug.remote_host=localhost" >> /etc/php/7.2/mods-available/xdebug.ini
+#RUN echo "xdebug.remote_autostart=off" >> /etc/php/7.2/mods-available/xdebug.ini
+#RUN echo "xdebug.idekey=PHPSTORM" >> /etc/php/7.2/mods-available/xdebug.ini
+
+## phpunit
+RUN apt-get -y install phpunit && apt-get clean
+
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
 EXPOSE 80
 EXPOSE 443
+#EXPOSE 9000
