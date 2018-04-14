@@ -7,13 +7,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get -y install php php7.2 php7.2-gd php7.2-mysql mysql-client php7.2-curl php7.2-xml apache2 php-gearman php-mbstring php-zip php-imagick && apt-get clean
 
 ## composer
-RUN apt-get -y install curl && apt-get clean
-RUN curl -sS https://getcomposer.org/installer | php
-RUN mv composer.phar /usr/bin/composer
+RUN apt-get -y install curl && apt-get clean && curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/bin/composer
 
 ## nodejs
-#curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
-apt-get -y install nodejs && apt-get clean
+#RUN curl -sL https://deb.nodesource.com/setup_9.x | bash -
+RUN apt-get -y install nodejs && apt-get clean
 
 ## CORS
 RUN a2enmod headers
