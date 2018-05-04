@@ -7,11 +7,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get -y install php php7.2 php7.2-gd php7.2-mysql mysql-client php7.2-curl php7.2-xml apache2 php-gearman php-mbstring php-zip php-imagick && apt-get clean
 
 ## composer
-RUN apt-get -y install curl && apt-get clean && curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/bin/composer
+#RUN apt-get -y install curl && apt-get clean && curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/bin/composer
 
 ## nodejs
-#RUN curl -sL https://deb.nodesource.com/setup_9.x | bash -
-RUN apt-get -y install nodejs && apt-get clean
+#RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+#RUN apt-get -y install nodejs && apt-get clean
 
 ## CORS
 RUN a2enmod headers
@@ -36,7 +36,7 @@ WORKDIR /etc/apache2
 RUN sed -i "s/AllowOverride None/AllowOverride ALL/g" apache2.conf
 
 ## debugger
-RUN apt-get -y install php-xdebug && apt-get clean
+#RUN apt-get -y install php-xdebug && apt-get clean
 #RUN echo "xdebug.remote_enable=on" >> /etc/php/7.2/mods-available/xdebug.ini
 #RUN echo "xdebug.remote_port=9000" >> /etc/php/7.2/mods-available/xdebug.ini
 #RUN echo "xdebug.remote_host=localhost" >> /etc/php/7.2/mods-available/xdebug.ini
@@ -44,7 +44,7 @@ RUN apt-get -y install php-xdebug && apt-get clean
 #RUN echo "xdebug.idekey=PHPSTORM" >> /etc/php/7.2/mods-available/xdebug.ini
 
 ## phpunit
-RUN apt-get -y install phpunit && apt-get clean
+#RUN apt-get -y install phpunit && apt-get clean
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
