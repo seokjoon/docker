@@ -47,7 +47,6 @@ RUN sed -i "s/AllowOverride None/AllowOverride ALL/g" apache2.conf
 #RUN apt-get -y install phpunit && apt-get clean
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
-CMD ["/usr/bin/memcached -u www-data -d -m 30 -l 127.0.0.1 -p 11211"]
 
 EXPOSE 80
 EXPOSE 443
