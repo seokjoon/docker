@@ -4,7 +4,7 @@ MAINTAINER Seok Joon Lee <seokjoon@gmail.com>
 ENV DEBIAN_FRONTEND=noninteractive
 
 ## apache2 & php7
-RUN apt-get update && apt-get -y install php php7.2 php7.2-gd php7.2-mysql mysql-client php7.2-curl php7.2-xml apache2 php-gearman php-mbstring php-zip php-imagick && apt-get clean
+RUN apt-get update && apt-get -y install php php7.2 php7.2-gd php7.2-mysql mysql-client php7.2-curl php7.2-xml apache2 php-gearman php-mbstring php-zip php-imagick memcached php-memcached && apt-get clean
 
 ## composer
 #RUN apt-get -y install curl && apt-get clean && curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/bin/composer
