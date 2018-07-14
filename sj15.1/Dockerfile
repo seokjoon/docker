@@ -44,7 +44,7 @@ RUN sed -i "s/AllowOverride None/AllowOverride ALL/g" apache2.conf
 #RUN echo "xdebug.idekey=PHPSTORM" >> /etc/php/7.2/mods-available/xdebug.ini
 
 ## phpunit
-RUN apt-get -y install phpunit && apt-get clean
+#RUN apt-get -y install phpunit && apt-get clean
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
