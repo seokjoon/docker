@@ -16,6 +16,9 @@ RUN apt-get update && apt-get -y install php php7.2 php7.2-gd php7.2-mysql mysql
 ## CORS
 RUN a2enmod headers
 
+## PGSQL
+RUN phpenmod pdo_pgsql
+
 ## timezone KST
 WORKDIR /etc/php/7.2/apache2
 RUN sed -i "s/;date.timezone =/date.timezone = Asia\/Seoul/g" php.ini
