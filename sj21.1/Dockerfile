@@ -5,7 +5,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 ## nginx & php
 RUN apt-get update && apt-get -y install php7.2 php7.2-fpm php7.2-gd php7.2-mysql mysql-client php7.2-curl php7.2-xml php-mbstring php-zip php-imagick nginx && apt-get clean
-ADD default /etc/nginx/site-available/default
+RUN rm /etc/nginx/sites-available/default
+ADD default /etc/nginx/sites-available/default
 
 ## apache2 & php7
 # RUN apt-get update && apt-get -y install php php7.2 php7.2-gd php7.2-mysql mysql-client php7.2-curl php7.2-xml apache2 php-gearman php-mbstring php-zip php-imagick memcached php-memcached && apt-get clean
