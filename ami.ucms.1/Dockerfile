@@ -49,8 +49,10 @@ RUN sed -i "s/AllowOverride None/AllowOverride ALL/g" apache2.conf
 
 ##virtual host
 ADD knnews.conf /etc/apache2/sites-available/knnews.conf
+ADD olw.conf /etc/apache2/sites-available/olw.conf
 ADD ucms15.conf /etc/apache2/sites-available/ucms15.conf
 RUN ln -s /etc/apache2/sites-available/knnews.conf /etc/apache2/sites-enabled/knnews.conf
+RUN ln -s /etc/apache2/sites-available/olw.conf /etc/apache2/sites-enabled/olw.conf
 RUN ln -s /etc/apache2/sites-available/ucms15.conf /etc/apache2/sites-enabled/ucms15.conf
 
 ## debugger
