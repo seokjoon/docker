@@ -52,9 +52,13 @@ RUN sed -i "s/AllowOverride None/AllowOverride ALL/g" apache2.conf
 ##virtual host
 ADD maeil.conf /etc/apache2/sites-available/maeil.conf
 ADD herald.conf /etc/apache2/sites-available/herald.conf
+ADD jnilbo.conf /etc/apache2/sites-available/jnilbo.conf
+ADD idaegu.conf /etc/apache2/sites-available/idaegu.conf
 ADD ucms10.conf /etc/apache2/sites-available/ucms10.conf
 RUN ln -s /etc/apache2/sites-available/maeil.conf /etc/apache2/sites-enabled/maeil.conf
 RUN ln -s /etc/apache2/sites-available/herald.conf /etc/apache2/sites-enabled/herald.conf
+RUN ln -s /etc/apache2/sites-available/jnilbo.conf /etc/apache2/sites-enabled/jnilbo.conf
+RUN ln -s /etc/apache2/sites-available/idaegu.conf /etc/apache2/sites-enabled/idaegu.conf
 RUN ln -s /etc/apache2/sites-available/ucms10.conf /etc/apache2/sites-enabled/ucms10.conf
 
 ## debugger
