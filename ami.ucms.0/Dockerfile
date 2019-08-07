@@ -50,11 +50,9 @@ WORKDIR /etc/apache2
 RUN sed -i "s/AllowOverride None/AllowOverride ALL/g" apache2.conf
 
 ##virtual host
-ADD busan.conf /etc/apache2/sites-available/busan.conf
 ADD maeil.conf /etc/apache2/sites-available/maeil.conf
 ADD herald.conf /etc/apache2/sites-available/herald.conf
 ADD ucms10.conf /etc/apache2/sites-available/ucms10.conf
-RUN ln -s /etc/apache2/sites-available/busan.conf /etc/apache2/sites-enabled/busan.conf
 RUN ln -s /etc/apache2/sites-available/maeil.conf /etc/apache2/sites-enabled/maeil.conf
 RUN ln -s /etc/apache2/sites-available/herald.conf /etc/apache2/sites-enabled/herald.conf
 RUN ln -s /etc/apache2/sites-available/ucms10.conf /etc/apache2/sites-enabled/ucms10.conf
