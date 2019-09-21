@@ -1,12 +1,12 @@
 server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
+        listen 80;
+        listen [::]:80;
 
         root /var/www/html/findgrep.com;
 
         index index.php index.html;
 
-        server_name _;
+        server_name findgrep.com;
 
         location / {
                 try_files $uri $uri/ /index.php?$query_string;
@@ -28,14 +28,14 @@ server {
 }
 
 server {
-        listen 443 default_server;
-        listen [::]:443 default_server;
+        listen 443;
+        listen [::]:443;
 
         root /var/www/html/findgrep.com;
 
         index index.php index.html;
 
-        server_name _;
+        server_name findgrep.com;
 
         location / {
                 try_files $uri $uri/ /index.php?$query_string;
