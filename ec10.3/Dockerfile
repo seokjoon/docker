@@ -10,6 +10,7 @@ RUN rm /etc/nginx/sites-available/default
 ADD default /etc/nginx/sites-enabled/default
 ADD ecfirm.net /etc/nginx/sites-enabled/ecfirm.net
 ADD findgrep.com /etc/nginx/sites-enabled/findgrep.com
+ADD joomla.ecfirm.net /etc/nginx/sites-enabled/joomla.ecfirm.net
 ADD kilmeny.net /etc/nginx/sites-enabled/kilmeny.net
 
 ## composer

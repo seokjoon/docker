@@ -1,19 +1,19 @@
 server {
         listen 80;
         listen [::]:80;
-        server_name kilmeny.net;
-        301 https://$host$request_uri;
+        server_name joomla.ecfirm.net;
+		return 301 https://$host$request_uri;
 }
 
 server {
         listen 443;
         listen [::]:443;
 
-        root /var/www/html/kilmeny.net;
+        root /var/www/html/ecfirm.net;
 
         index index.php index.html;
 
-        server_name kilmeny.net;
+        server_name joomla.ecfirm.net;
 
         location / {
                 try_files $uri $uri/ /index.php?$query_string;
