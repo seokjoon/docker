@@ -7,11 +7,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get -y install php7.2 php7.2-fpm php7.2-gd php7.2-mysql mysql-client php7.2-curl php7.2-xml php-mbstring php-zip php-imagick nginx && apt-get clean
 RUN rm /etc/nginx/sites-available/default
 # ADD default /etc/nginx/sites-available/default
-ADD ./default /etc/nginx/sites-enabled/default
-ADD ./ecfirm.net /etc/nginx/sites-enabled/ecfirm.net
-ADD ./findgrep.com /etc/nginx/sites-enabled/findgrep.com
-ADD ./joomla.ecfirm.net /etc/nginx/sites-enabled/joomla.ecfirm.net
-ADD ./kilmeny.net /etc/nginx/sites-enabled/kilmeny.net
+ADD default /etc/nginx/sites-enabled/default
+ADD ecfirm.net /etc/nginx/sites-enabled/ecfirm.net
+ADD findgrep.com /etc/nginx/sites-enabled/findgrep.com
+ADD joomla.ecfirm.net /etc/nginx/sites-enabled/joomla.ecfirm.net
+ADD kilmeny.net /etc/nginx/sites-enabled/kilmeny.net
 
 ## composer
 RUN apt-get -y install curl && apt-get clean && curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/bin/composer
