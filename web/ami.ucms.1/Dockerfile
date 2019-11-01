@@ -4,7 +4,7 @@ MAINTAINER Seok Joon Lee <seokjoon@gmail.com>
 ENV DEBIAN_FRONTEND=noninteractive
 
 ## apache2 & php7
-RUN apt-get update && apt-get -y install php php7.2 php7.2-gd php7.2-mysql mysql-client php7.2-curl php7.2-xml apache2 php-mbstring php-zip php-imagick memcached php-memcached php-pgsql php7.2-pgsql libapache2-mod-php7.2 && apt-get clean
+RUN apt-get update && apt-get -y install php php7.2 php7.2-gd php7.2-mysql mysql-client php7.2-curl php7.2-xml apache2 php-mbstring php-zip php-imagick memcached php-memcached php-pgsql php7.2-pgsql libapache2-mod-php7.2 php7.2-gmp && apt-get clean
 
 ##ssl
 RUN a2enmod ssl
