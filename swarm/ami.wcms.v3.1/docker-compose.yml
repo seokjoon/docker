@@ -1,8 +1,28 @@
 version: "3"
 services:
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    restart: always
+    ports:
+      - 3306:3306
+    command:
+      - "--max_allowed_packet=128M"
+      - "--innodb_buffer_pool_size=128M"
+      - "--wait_timeout=3600"
+      - "--interactive_timeout=3600"
+      - "--connect_timeout=600"
+      - "--net_read_timeout=600"
+      - "--net_write_timeout=600"
+    volumes:
+      - "/d1/db/mysql57/data:/var/lib/mysql"
+      - "/d1/db/mysql57/log:/var/log/mysql"
+      - "/d1/db/mysql57/conf:/etc/mysql/conf.d"
+
   registry:
     container_name: registry
     image: registry
+    restart: always
     ports:
       - 5000:5000
     volumes:
@@ -11,6 +31,7 @@ services:
   manager:
     container_name: manager
     image: docker:18.05.0-ce-dind
+    restart: always
     privileged: true
     tty: true
     ports:
@@ -20,38 +41,43 @@ services:
       - registry
     expose:
       - 3375
-    command: "--insecure-registry reg:5000"
+    command: "--insecure-registry registry:5000"
     volumes:
-      - "/d1/infra/docker/manager:/stack"
+      # - "/d1/infra/docker/manager:/stack"
+      - "/d1/infra/docker/manager/:/var/www"
 
   worker1:
     container_name: worker1
     image: docker:18.05.0-ce-dind
+    restart: always
     privileged: true
     tty: true
     depends_on:
-      - registry
       - manager
+      - registry
     expose:
       - 7946
       - 7946/udp
       - 4789/udp
-    command: "--insecure-registry reg:5000"
+    command: "--insecure-registry registry:5000"
     volumes:
-      - "/d1/infra/docker/worker1:/var/www"
+      - "/d1/infra/docker/manager/:/var/www"
+      # - "/d1/infra/docker/worker1/:/var/www"
 
   worker2:
     container_name: worker2
     image: docker:18.05.0-ce-dind
+    restart: always
     privileged: true
     tty: true
     depends_on:
-      - registry
       - manager
+      - registry
     expose:
       - 7946
       - 7946/udp
       - 4789/udp
-    command: "--insecure-registry reg:5000"
+    command: "--insecure-registry registry:5000"
     volumes:
-      - "/d1/infra/docker/worker2:/var/www"
+      - "/d1/infra/docker/manager/:/var/www"
+      # - "/d1/infra/docker/worker1/:/var/www"
