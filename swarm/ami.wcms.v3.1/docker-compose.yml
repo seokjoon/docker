@@ -38,6 +38,7 @@ services:
       - 8000:80
       - 9000:9000
     depends_on:
+      - mysql
       - registry
     expose:
       - 3375
@@ -53,6 +54,7 @@ services:
     privileged: true
     tty: true
     depends_on:
+      - mysql
       - manager
       - registry
     expose:
@@ -71,6 +73,7 @@ services:
     privileged: true
     tty: true
     depends_on:
+      - mysql
       - manager
       - registry
     expose:
