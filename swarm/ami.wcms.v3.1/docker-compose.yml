@@ -35,7 +35,7 @@ services:
     privileged: true
     tty: true
     ports:
-      - 8000:80
+      - 80:80
       - 9000:9000
     depends_on:
       - mysql
@@ -46,7 +46,7 @@ services:
     volumes:
       # - "/d1/infra/docker/manager:/stack"
       # - "/d1/infra/docker/manager/:/var/www"
-      - "/d1/app/www/8080"
+      - "/d1/app/www/80:/var/www"
 
   worker1:
     container_name: worker1
@@ -65,7 +65,7 @@ services:
     command: "--insecure-registry registry:5000"
     volumes:
       # - "/d1/infra/docker/manager/:/var/www"
-      - "/d1/app/www/8080"
+      - "/d1/app/www/80:/var/www"
 
   worker2:
     container_name: worker2
@@ -84,4 +84,4 @@ services:
     command: "--insecure-registry registry:5000"
     volumes:
       # - "/d1/infra/docker/manager/:/var/www"
-      - "/d1/app/www/8080"
+      - "/d1/app/www/80:/var/www"
