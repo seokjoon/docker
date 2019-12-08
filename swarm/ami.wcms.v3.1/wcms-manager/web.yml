@@ -1,0 +1,21 @@
+version: "3"
+services:
+  web:
+    image: seokjoon/all:ami.wcms.v3.1
+    deploy:
+      replicas: 3
+#      placement:
+#        constraints: [node.role != manager]
+    networks:
+      - wcms-net
+    volumes:
+#      - "/var/www:/var/www"
+#      - "/var/www/log:/var/log/nginx"
+#      - "/var/www/conf/etc/nginx/ssl:/etc/nginx/ssl"
+        - "/d1/app/www/80/:/var/www"
+        - "/d1/app/www/80/conf/etc/nginx/ssl:/etc/nginx/ssl"
+        - "/d1/app/www/80/log:/var/log/nginx"
+
+networks:
+  wcms-net:
+    external: true
