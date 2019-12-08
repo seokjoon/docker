@@ -1,6 +1,6 @@
 version: "3"
 services:
-  web:
+  nginx:
     image: seokjoon/all:ami.wcms.v3.1
     deploy:
       replicas: 3
