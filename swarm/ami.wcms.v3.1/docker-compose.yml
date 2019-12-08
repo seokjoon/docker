@@ -44,8 +44,7 @@ services:
       - 3375
     command: "--insecure-registry registry:5000"
     volumes:
-      # - "/d1/infra/docker/manager:/stack"
-      # - "/d1/infra/docker/manager/:/var/www"
+      - "./stack:/stack"
       - "/d1/app/www/80:/var/www"
 
   worker1:
@@ -64,7 +63,6 @@ services:
       - 4789/udp
     command: "--insecure-registry registry:5000"
     volumes:
-      # - "/d1/infra/docker/manager/:/var/www"
       - "/d1/app/www/80:/var/www"
 
   worker2:
@@ -83,5 +81,4 @@ services:
       - 4789/udp
     command: "--insecure-registry registry:5000"
     volumes:
-      # - "/d1/infra/docker/manager/:/var/www"
       - "/d1/app/www/80:/var/www"
