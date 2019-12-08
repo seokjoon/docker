@@ -1,7 +1,7 @@
 version: "3"
 services:
   nginx:
-    image: seokjoon/all:ami.wcms.v3.1
+    image: "seokjoon/all:ami.wcms.v3.1"
     deploy:
       replicas: 3
 #      placement:
