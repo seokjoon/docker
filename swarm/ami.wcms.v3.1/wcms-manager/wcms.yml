@@ -6,6 +6,8 @@ services:
       replicas: 3
 #      placement:
 #        constraints: [node.role != manager]
+    ports:
+      - 80:80
     networks:
       - wcms-net
     volumes:
