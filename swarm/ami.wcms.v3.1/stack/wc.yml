@@ -10,11 +10,11 @@ services:
       SERVICE_PORTS: 80
       BACKEND_HOST: wc:80
     depends_on:
-      - wc
+      - wcweb
     networks:
       - wcnet
 
-  wc:
+  wcweb:
     image: registry:5000/wc:latest
     deploy:
       replicas: 3
