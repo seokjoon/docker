@@ -4,10 +4,10 @@ services:
   app:
     image: dockersamples/visualizer
     ports:
-      - "9000":"8000"
+      - "9000:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     deploy:
       mode: global
       placement:
-        constraints: [node.rold == manager]
+        constraints: [node.role == manager]

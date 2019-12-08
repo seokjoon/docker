@@ -15,5 +15,13 @@ RUN pecl install inotify
 CMD ["/bin/bash", "-c", "/usr/sbin/service php7.2-fpm start && nginx -g 'daemon off;'"]
 
 EXPOSE 80
+EXPOSE 8000
+EXPOSE 8060
+EXPOSE 8070
+EXPOSE 8080
 EXPOSE 443
+EXPOSE 4430
+EXPOSE 4436
+EXPOSE 4437
+EXPOSE 4438
 EXPOSE 6001

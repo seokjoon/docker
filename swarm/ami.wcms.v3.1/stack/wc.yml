@@ -1,6 +1,6 @@
 version: "3"
 services:
-  nginx:
+  ngproxy:
     image: gihyodocker/nginx-proxy:latest
     deploy:
       replicas: 3
@@ -8,13 +8,12 @@ services:
         constraints: [node.role != manager]
     environment:
       SERVICE_PORTS: 80
-      BACKEND_HOST: wc:80
+      BACKEND_HOST: wc_web
     depends_on:
-      - wcweb
+      - web
     networks:
       - wcnet
-
-  wcweb:
+  web:
     image: registry:5000/wc:latest
     deploy:
       replicas: 3
@@ -22,7 +21,14 @@ services:
         constraints: [node.role != manager]
     networks:
       - wcnet
+    volumes:
+      - "/var/www:/var/www"
+      - "/var/www/log:/var/log/nginx"
+      - "/var/www/conf/etc/nginx/ssl:/etc/nginx/ssl"
+#        - "/d1/app/www/80/:/var/www"
+#        - "/d1/app/www/80/conf/etc/nginx/ssl:/etc/nginx/ssl"
+#        - "/d1/app/www/80/log:/var/log/nginx"
 
-  networks:
-    wcnet:
-      external: true
+networks:
+  wcnet:
+    external: true
