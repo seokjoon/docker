@@ -26,7 +26,7 @@ server {
                 deny all;
         }
 
-        client_max_body_size 11M
+        client_max_body_size 11M;
 }
 
 server {
@@ -76,5 +76,5 @@ server {
         }
         ######## laravel-echo-server END
 
-        client_max_body_size 11M
+        client_max_body_size 11M;
 }
