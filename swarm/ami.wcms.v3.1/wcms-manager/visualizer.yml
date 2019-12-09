@@ -10,4 +10,4 @@ services:
     deploy:
       mode: global
       placement:
-        constraints: [node.role == wcms-manager]
+        constraints: [node.role == manager]
