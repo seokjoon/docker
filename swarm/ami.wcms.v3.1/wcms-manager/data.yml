@@ -12,7 +12,7 @@ services:
     deploy:
       mode: global
       placement:
-        constraints: [node.role == manager]
+        constraints: [node.role == wcms-manager]
 
 networks:
   wcms-net:
