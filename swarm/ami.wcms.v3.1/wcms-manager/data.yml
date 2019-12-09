@@ -1,8 +1,7 @@
 version: "3"
 
 services:
-
-  data-web:
+  web:
     image: alpine:latest
     networks:
       - wcms-net
