@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+
+  data-web:
+    image: alpine:latest
+    networks:
+      - wcms-net
+    volumes:
+      - "/d1/app/www/80/:/var/www"
+      - "/d1/app/www/80/conf/etc/nginx/ssl:/etc/nginx/ssl"
+      - "/d1/app/www/80/log:/var/log/nginx"
+    deploy:
+      mode: global
+      placement:
+        constraints: [node.role == manager]
+
+networks:
+  wcms-net:
+    external: true
