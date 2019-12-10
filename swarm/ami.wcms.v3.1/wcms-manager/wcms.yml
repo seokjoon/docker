@@ -36,13 +36,24 @@ services:
 #      - mysql_data:/var/lib/mysql
 #      - mysql_log:/var/log/mysql
 
+  cp:
+    image: alpine
+    command: tail -f /dev/null
+    volumes:
+      - nginx_conf:/etc/nginx/ssl
+      - nginx_log:/var/log/nginx
+      - nginx_www:/var/www
+      - mysql_conf:/etc/mysql/conf.d
+      - mysql_data:/var/lib/mysql
+      - mysql_log:/var/log/mysql
+
 volumes:
   mysql_conf:
   mysql_data:
   mysql_log:
   nginx_conf:
   nginx_log:
-  nginx_www: /d1/app/www/80/
+  nginx_www:
 
 networks:
   wcms-net:
