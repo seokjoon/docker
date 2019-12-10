@@ -42,7 +42,8 @@ volumes:
   mysql_log:
   nginx_conf:
   nginx_log:
-  nginx_www:/d1/app/www/80/
+  nginx_www:
+    - /d1/app/www/80/
 
 networks:
   wcms-net:
