@@ -2,7 +2,8 @@ version: "3"
 services:
 
   nginx:
-    image: "seokjoon/all:ami.wcms.v3.1"
+    image: "seokjoon/all:ami.wcms.v3.2"
+    restart: unless-stopped
     deploy:
       replicas: 3
       # placement:
@@ -15,18 +16,35 @@ services:
     networks:
       - wcms-net
     volumes:
-      # - "/d1/app/www/80/:/var/www"
-      # - "/d1/app/www/80/log:/var/log/nginx"
-      - "/d1/app/www/80/conf/etc/nginx/ssl:/etc/nginx/ssl"
-      - nginx_www:/var/www
+      - nginx_conf:/etc/nginx/ssl
       - nginx_log:/var/log/nginx
-      # - nginx_conf:/etc/nginx/ssl
+      - nginx_www:/var/www
+
+  mysql:
+    image: mysql:5.7
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    command:
+      - "--max_allowed_packet=128M"
+      - "--innodb_buffer_pool_size=128M"
+      - "--wait_timeout=3600"
+      - "--interactive_timeout=3600"
+      - "--connect_timeout=600"
+      - "--net_read_timeout=600"
+      - "--net_write_timeout=600"
+    volumes:
+      - mysql_conf:/etc/mysql/conf.d
+      - mysql_data:/var/lib/mysql
+      - mysql_log:/var/log/mysql
 
 volumes:
-  nginx_www:
+  mysql_conf:
+  mysql_data:
+  mysql_log:
   nginx_conf:
   nginx_log:
-  mysql:
+  nginx_www:
 
 networks:
   wcms-net:
