@@ -22,11 +22,7 @@ services:
 
   mysql:
     image: mysql:5.7
-    restart: "no"
-    deploy:
-      replicas: 1
-        placement:
-          constraints: [node.role == worker]
+    restart: "no" # unless-stopped
     ports:
       - 3306:3306
     command:
