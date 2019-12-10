@@ -38,23 +38,6 @@ services:
 #      - mysql_data:/var/lib/mysql
 #      - mysql_log:/var/log/mysql
 
-  cp:
-    image: alpine
-#    deploy:
-#      replicas: 1
-#      placement:
-#        constraints: [node.role == manager]
-    command: tail -f /dev/null
-    networks:
-      - wcms-net
-    volumes:
-      - nginx_conf:/etc/nginx/ssl
-      - nginx_log:/var/log/nginx
-      - nginx_www:/var/www
-      - mysql_conf:/etc/mysql/conf.d
-      - mysql_data:/var/lib/mysql
-      - mysql_log:/var/log/mysql
-
 volumes:
   mysql_conf:
   mysql_data:
@@ -62,6 +45,17 @@ volumes:
   nginx_conf:
   nginx_log:
   nginx_www:
+
+cp:
+  image: alpine
+  command: tail -f /dev/null
+  volumes:
+    - nginx_conf:/etc/nginx/ssl
+    - nginx_log:/var/log/nginx
+    - nginx_www:/var/www
+    - mysql_conf:/etc/mysql/conf.d
+    - mysql_data:/var/lib/mysql
+    - mysql_log:/var/log/mysql
 
 networks:
   wcms-net:
