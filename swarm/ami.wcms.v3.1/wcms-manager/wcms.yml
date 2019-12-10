@@ -38,6 +38,10 @@ services:
 
   cp:
     image: alpine
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
     command: tail -f /dev/null
     volumes:
       - nginx_conf:/etc/nginx/ssl
