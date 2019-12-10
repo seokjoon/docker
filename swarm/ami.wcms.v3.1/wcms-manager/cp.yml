@@ -3,8 +3,9 @@ version: "3"
 services:
   cp:
     image: alpine
-    restart: always
-    command: tail -f /dev/null
+    # restart: always
+    # command: tail -f /dev/null
+    tty: true
     volumes:
       - nginx_conf:/etc/nginx/ssl
       - nginx_log:/var/log/nginx
@@ -12,5 +13,5 @@ services:
       - mysql_conf:/etc/mysql/conf.d
       - mysql_data:/var/lib/mysql
       - mysql_log:/var/log/mysql
-    networks:
-      - wcms-net
+    # networks:
+    #  - wcms-net

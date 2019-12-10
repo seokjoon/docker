@@ -5,9 +5,9 @@ services:
     image: "seokjoon/all:ami.wcms.v3.2"
     deploy:
       replicas: 3
-      # placement:
+       placement:
         # constraints: [node.role != manager]
-        # constraints: [node.role == manager]
+         constraints: [node.role == manager]
         # constraints:
           # - node.role == manager
     ports:
@@ -15,9 +15,14 @@ services:
     networks:
       - wcms-net
     volumes:
-      - nginx_conf:/etc/nginx/ssl
-      - nginx_log:/var/log/nginx
-      - nginx_www:/var/www
+      - "/d1/app/www/80/conf/etc/nginx/ssl:/etc/nginx/ssl"
+      - "/d1/app/www/80/log:/var/log/nginx"
+      - "/d1/app/www/80/:/var/www"
+#      - nginx_conf:/etc/nginx/ssl
+#      - nginx_log:/var/log/nginx
+#      - nginx_www:/var/www
+
+
 
 #  mysql:
 #    image: mysql:5.7
@@ -38,13 +43,13 @@ services:
 #      - mysql_data:/var/lib/mysql
 #      - mysql_log:/var/log/mysql
 
-volumes:
-  mysql_conf:
-  mysql_data:
-  mysql_log:
-  nginx_conf:
-  nginx_log:
-  nginx_www:
+#volumes:
+#  mysql_conf:
+#  mysql_data:
+#  mysql_log:
+#  nginx_conf:
+#  nginx_log:
+#  nginx_www:
 
 networks:
   wcms-net:
