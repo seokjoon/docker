@@ -17,11 +17,11 @@ services:
       - wcms-net
     volumes:
       # - "/d1/app/www/80/:/var/www"
-      # - "/d1/app/www/80/conf/etc/nginx/ssl:/etc/nginx/ssl"
       # - "/d1/app/www/80/log:/var/log/nginx"
+      - "/d1/app/www/80/conf/etc/nginx/ssl:/etc/nginx/ssl"
       - nginx_www:/var/www
-      - nginx_conf:/etc/nginx/ssl
       - nginx_log:/var/log/nginx
+      # - nginx_conf:/etc/nginx/ssl
 
 volumes:
   nginx_www:
