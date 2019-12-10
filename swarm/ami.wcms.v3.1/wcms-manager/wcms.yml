@@ -9,8 +9,8 @@ services:
         # constraints: [node.role != manager]
         # constraints: [node.role == manager]
         constraints:
-          # - node.role == manager
-          - node.role == wcms-pweb01
+          - node.role == manager
+          # - node.role == wcms-pweb01
     ports:
       - 80:80
     networks:
@@ -19,6 +19,10 @@ services:
       - "/d1/app/www/80/:/var/www"
       - "/d1/app/www/80/conf/etc/nginx/ssl:/etc/nginx/ssl"
       - "/d1/app/www/80/log:/var/log/nginx"
+
+volumes:
+  nginx:
+  mysql:
 
 networks:
   wcms-net:
