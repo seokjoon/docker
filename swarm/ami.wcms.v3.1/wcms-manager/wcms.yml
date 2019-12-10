@@ -39,8 +39,8 @@ services:
 #      - mysql_log:/var/log/mysql
 
   cp:
-    image: alpine
     container_name: cp
+    image: alpine
     deploy:
       replicas: 1
       placement:
