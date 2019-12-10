@@ -23,6 +23,8 @@ services:
 #    image: mysql:5.7
 #    ports:
 #      - 3306:3306
+#    networks:
+#      - wcms-net
 #    command:
 #      - "--max_allowed_packet=128M"
 #      - "--innodb_buffer_pool_size=128M"
@@ -44,6 +46,8 @@ services:
       placement:
         constraints: [node.role == manager]
     command: tail -f /dev/null
+    networks:
+      - wcms-net
     volumes:
       - nginx_conf:/etc/nginx/ssl
       - nginx_log:/var/log/nginx
