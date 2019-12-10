@@ -8,9 +8,8 @@ services:
       placement:
         # constraints: [node.role != manager]
         # constraints: [node.role == manager]
-        constraints:
-          - node.role == manager
-          # - node.role == wcms-pweb01
+        # constraints:
+          # - node.role == manager
     ports:
       - 80:80
     networks:
