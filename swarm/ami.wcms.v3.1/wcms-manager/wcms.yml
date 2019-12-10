@@ -38,6 +38,7 @@ services:
 
   cp:
     image: alpine
+    container_name: cp
     deploy:
       replicas: 1
       placement:
