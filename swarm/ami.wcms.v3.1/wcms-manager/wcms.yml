@@ -3,7 +3,6 @@ services:
 
   nginx:
     image: "seokjoon/all:ami.wcms.v3.2"
-    restart: unless-stopped
     deploy:
       replicas: 3
       # placement:
@@ -22,7 +21,6 @@ services:
 
   mysql:
     image: mysql:5.7
-    # restart: unless-stopped
     ports:
       - 3306:3306
     command:
