@@ -5,7 +5,7 @@ services:
     image: "seokjoon/all:ami.wcms.v3.1"
     deploy:
       replicas: 3
-      placement:
+      # placement:
         # constraints: [node.role != manager]
         # constraints: [node.role == manager]
         # constraints:
