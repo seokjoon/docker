@@ -12,6 +12,9 @@ ADD default /etc/nginx/sites-available/default
 ADD 30-inotify.ini /etc/php/7.2/cli/conf.d/30-inotify.ini
 RUN pecl install inotify
 
+## composer
+RUN apt-get -y install curl && apt-get clean && curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/bin/composer
+
 ## timezone KST
 WORKDIR /etc/php/7.2/fpm
 RUN sed -i "s/;date.timezone =/date.timezone = Asia\/Seoul/g" php.ini
