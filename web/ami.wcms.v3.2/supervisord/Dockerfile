@@ -35,20 +35,20 @@ RUN sed -i "s/max_execution_time = 30/max_execution_time = 300/g" php.ini
 ## CMD ["/usr/bin/supervisord"]
 ## RUN supervisorctl start wcmsV3-laravel-article-receive:*
 
-# RUN apt-get update && apt-get install -y supervisor && apt-get clean
-# RUN mkdir -p /var/log/supervisor
-# COPY supervisord/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-# COPY supervisord/conf.d /etc/supervisor/conf.d/wcmsV3-laravel-article-receive.conf
+RUN apt-get update && apt-get install -y supervisor && apt-get clean
+RUN mkdir -p /var/log/supervisor
+COPY supervisord.conf /etc/supervisor/supervisord.conf
+COPY conf.d/wcmsV3-laravel-article-receive.conf /etc/supervisor/conf.d/wcmsV3-laravel-article-receive.conf
 
-CMD ["/bin/bash", "-c", "/usr/sbin/service php7.2-fpm start && nginx -g 'daemon off;'"]
-# CMD ["/usr/bin/supervisord"]
+# CMD ["/bin/bash", "-c", "/usr/sbin/service php7.2-fpm start && nginx -g 'daemon off;'"]
+CMD ["/usr/bin/supervisord"]
 # ADD start.sh /
 # RUN chmod +x /start.sh
 # CMD ["/start.sh"]
 
 
-EXPOSE 80
-EXPOSE 8000
-EXPOSE 8080
-EXPOSE 443
-EXPOSE 6001
+# EXPOSE 80
+# EXPOSE 8000
+# EXPOSE 8080
+# EXPOSE 443
+# EXPOSE 6001
