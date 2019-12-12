@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  supervisord:
+    privileged: true
+    image: "seokjoon/all:ami.wcms.v3.2.supervisord"
+    restart: always
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - wcms-net
+    volumes:
+      # - "/d1/app/www/80/conf/etc/nginx/ssl:/etc/nginx/ssl"
+      # - "/d1/app/www/80/log:/var/log/nginx"
+      - "/d1/app/www/80/:/var/www"
