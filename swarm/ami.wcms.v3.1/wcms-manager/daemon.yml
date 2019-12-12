@@ -2,9 +2,7 @@ version: "3"
 
 services:
   supervisord:
-    privileged: true
     image: "seokjoon/all:ami.wcms.v3.2.supervisord"
-    restart: always
     deploy:
       placement:
         constraints: [node.role == manager]
