@@ -38,7 +38,7 @@ RUN sed -i "s/max_execution_time = 30/max_execution_time = 300/g" php.ini
 RUN apt-get update && apt-get install -y supervisor && apt-get clean
 RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/supervisord.conf
-COPY conf.d/wcmsV3-laravel-article-receive.conf /etc/supervisor/conf.d/wcmsV3-laravel-article-receive.conf
+COPY wcmsV3-laravel-article-receive.conf /etc/supervisor/conf.d/wcmsV3-laravel-article-receive.conf
 
 # CMD ["/bin/bash", "-c", "/usr/sbin/service php7.2-fpm start && nginx -g 'daemon off;'"]
 CMD ["/usr/bin/supervisord"]

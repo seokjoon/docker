@@ -22,29 +22,7 @@ RUN sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 11M/g" php.ini
 RUN sed -i "s/post_max_size = 8M/post_max_size = 60M/g" php.ini
 RUN sed -i "s/max_execution_time = 30/max_execution_time = 300/g" php.ini
 
-## composer
-# RUN apt-get -y install curl && apt-get clean && curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/bin/composer
-
-## supervisord
-# RUN apt-get update && apt-get -y install supervisor && apt-get clean
-## RUN supervisorctl start wcmsV3-laravel-article-receive:*
-# RUN mkdir -p /var/log/supervisor /etc/supervisor /etc/supervisor/conf.d
-# COPY supervisord.conf /etc/supervisor/supervisord.conf
-# COPY conf.d/wcmsV3-laravel-article-receive.conf /etc/supervisor/conf.d/wcmsV3-laravel-article-receive.conf
-# CMD ["/usr/bin/supervisord -c /etc/supervisor/supervisord.conf"]
-## CMD ["/usr/bin/supervisord"]
-## RUN supervisorctl start wcmsV3-laravel-article-receive:*
-
-# RUN apt-get update && apt-get install -y supervisor && apt-get clean
-# RUN mkdir -p /var/log/supervisor
-# COPY supervisord/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-# COPY supervisord/conf.d /etc/supervisor/conf.d/wcmsV3-laravel-article-receive.conf
-
 CMD ["/bin/bash", "-c", "/usr/sbin/service php7.2-fpm start && nginx -g 'daemon off;'"]
-# CMD ["/usr/bin/supervisord"]
-# ADD start.sh /
-# RUN chmod +x /start.sh
-# CMD ["/start.sh"]
 
 
 EXPOSE 80
