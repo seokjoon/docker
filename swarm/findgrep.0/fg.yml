@@ -53,7 +53,7 @@ services:
       - "/d1/db/mysql57/conf:/etc/mysql/conf.d"
 
   nginx:
-    image: "reg:5000/findgrep.0"
+    image: "52.78.100.77:5000/findgrep.0"
     # image: "localhost:5000/findgrep.0"
     deploy:
       replicas: 2

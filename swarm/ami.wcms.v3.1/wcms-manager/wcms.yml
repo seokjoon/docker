@@ -1,26 +1,31 @@
 version: "3"
 services:
 
-  nginx:
-    image: "seokjoon/all:ami.wcms.v3.2"
-    deploy:
-      replicas: 3
-      placement:
-        constraints:
-          - node.role == manager
+  reg:
+    image: registry
     ports:
-      - 80:80
+      - 5000:5000
+    deploy:
+      mode: global
+      placement:
+        constraints: [node.role == manager]
     networks:
       - wcms-net
     volumes:
-      - "/d1/app/www/80/conf/etc/nginx/ssl:/etc/nginx/ssl"
-      - "/d1/app/www/80/log:/var/log/nginx"
-      - "/d1/app/www/80/:/var/www"
-#      - nginx_conf:/etc/nginx/ssl
-#      - nginx_log:/var/log/nginx
-#      - nginx_www:/var/www
+      - "/d1/infra/docker/registry:/var/lib/registry"
 
-
+  vs:
+    image: dockersamples/visualizer
+    ports:
+      - 8080:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      mode: global
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - wcms-net
 
   mysql:
     image: mysql:5.7
@@ -48,6 +53,28 @@ services:
 #      - mysql_conf:/etc/mysql/conf.d
 #      - mysql_data:/var/lib/mysql
 #      - mysql_log:/var/log/mysql
+
+  nginx:
+    image: "seokjoon/all:ami.wcms.v3.2"
+    deploy:
+      replicas: 3
+      placement:
+        constraints:
+          - node.role == manager
+    ports:
+      - 80:80
+    networks:
+      - wcms-net
+    depends_on:
+      - mysql
+      - reg
+    volumes:
+      - "/d1/app/www/80/conf/etc/nginx/ssl:/etc/nginx/ssl"
+      - "/d1/app/www/80/log:/var/log/nginx"
+      - "/d1/app/www/80/:/var/www"
+#      - nginx_conf:/etc/nginx/ssl
+#      - nginx_log:/var/log/nginx
+#      - nginx_www:/var/www
 
 #volumes:
 #  mysql_conf:
