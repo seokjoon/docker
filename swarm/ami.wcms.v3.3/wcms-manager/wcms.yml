@@ -26,13 +26,13 @@ services:
     networks:
       - wcms-net
     command:
-      - "--max_allowed_packet=128M"
-      - "--innodb_buffer_pool_size=128M"
-      - "--wait_timeout=3600"
-      - "--interactive_timeout=3600"
-      - "--connect_timeout=600"
-      - "--net_read_timeout=600"
-      - "--net_write_timeout=600"
+#      - "--max_allowed_packet=128M"
+#      - "--innodb_buffer_pool_size=128M"
+#      - "--wait_timeout=3600"
+#      - "--interactive_timeout=3600"
+#      - "--connect_timeout=600"
+#      - "--net_read_timeout=600"
+#      - "--net_write_timeout=600"
     volumes:
       - "/d1/db/mysql57/data:/var/lib/mysql"
       - "/d1/db/mysql57/log:/var/log/mysql"
