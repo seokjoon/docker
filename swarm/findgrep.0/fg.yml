@@ -2,10 +2,13 @@ version: "3"
 services:
 
   reg:
-    container_name: reg
     image: registry
     ports:
       - 5000:5000
+    deploy:
+      mode: global
+      placement:
+        constraints: [node.role == manager]
     volumes:
       - "/d1/infra/docker/registry:/var/lib/registry"
 
