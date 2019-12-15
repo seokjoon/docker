@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  supervisord:
+    image: "seokjoon/all:ami.wcms.v3.2.supervisord"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    volumes:
+      # - "/d1/app/www/80/conf/etc/nginx/ssl:/etc/nginx/ssl"
+      # - "/d1/app/www/80/log:/var/log/nginx"
+      - "/d1/app/www/80/:/var/www"
