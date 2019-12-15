@@ -27,22 +27,6 @@ services:
     networks:
       - fg-net
 
-  nginx:
-    image: "ec11.ecfirm.net:5000/findgrep.0"
-    deploy:
-      replicas: 2
-      placement:
-        constraints:
-          - node.role == manager
-    ports:
-      - 80:80
-    networks:
-      - fg-net
-    volumes:
-      - "/d1/app/www/80/conf/etc/nginx/ssl:/etc/nginx/ssl"
-      - "/d1/app/www/80/log:/var/log/nginx"
-      - "/d1/app/www/80/:/var/www"
-
   mysql:
     image: mysql:5.7
     deploy:
@@ -67,6 +51,22 @@ services:
       - "/d1/db/mysql57/data:/var/lib/mysql"
       - "/d1/db/mysql57/log:/var/log/mysql"
       - "/d1/db/mysql57/conf:/etc/mysql/conf.d"
+
+  nginx:
+    image: "ec11.ecfirm.net:5000/findgrep.0"
+    deploy:
+      replicas: 2
+      placement:
+        constraints:
+          - node.role == manager
+    ports:
+      - 80:80
+    networks:
+      - fg-net
+    volumes:
+      - "/d1/app/www/80/conf/etc/nginx/ssl:/etc/nginx/ssl"
+      - "/d1/app/www/80/log:/var/log/nginx"
+      - "/d1/app/www/80/:/var/www"
 
 networks:
   fg-net:
