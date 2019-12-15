@@ -4,7 +4,6 @@ services:
   reg:
     container_name: reg
     image: registry
-    restart: always
     ports:
       - 5000:5000
     volumes:
