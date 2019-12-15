@@ -1,7 +1,7 @@
 version: "3"
 services:
 
-  ec11.ecfirm.net:
+  reg:
     image: registry
     ports:
       - 5000:5000
@@ -62,7 +62,7 @@ services:
           - node.role == manager
     depends_on:
       - mysql
-      - ec11.ecfirm.net
+      - reg
     ports:
       - 80:80
     networks:
