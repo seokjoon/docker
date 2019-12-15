@@ -1,7 +1,7 @@
 version: "3"
 services:
 
-  reg:
+  ec11.ecfirm.net:
     image: registry
     ports:
       - 5000:5000
@@ -53,13 +53,16 @@ services:
       - "/d1/db/mysql57/conf:/etc/mysql/conf.d"
 
   nginx:
-    # image: "reg:5000/findgrep.0"
-    image: "localhost:5000/findgrep.0"
+    image: "reg:5000/findgrep.0"
+    # image: "localhost:5000/findgrep.0"
     deploy:
       replicas: 2
       placement:
         constraints:
           - node.role == manager
+    depends_on:
+      - mysql
+      - ec11.ecfirm.net
     ports:
       - 80:80
     networks:
