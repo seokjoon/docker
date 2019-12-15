@@ -12,6 +12,17 @@ services:
     volumes:
       - "/d1/infra/docker/registry:/var/lib/registry"
 
+  vs:
+    image: dockersamples/visualizer
+    ports:
+      - "9000:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      mode: global
+      placement:
+        constraints: [node.role == manager]
+
 #  nginx:
 #    image: "seokjoon/all:ami.wcms.v3.2"
 #    deploy:
