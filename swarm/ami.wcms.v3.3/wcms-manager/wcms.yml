@@ -36,7 +36,7 @@ services:
     volumes:
       - "/d1/db/mysql57/data:/var/lib/mysql"
       - "/d1/db/mysql57/log:/var/log/mysql"
-      - "/d1/db/mysql57/conf:/etc/mysql/conf.d"
+      - "/d1/db/mysql57/conf:/etc/mysql"
 #      - mysql_conf:/etc/mysql/conf.d
 #      - mysql_data:/var/lib/mysql
 #      - mysql_log:/var/log/mysql
