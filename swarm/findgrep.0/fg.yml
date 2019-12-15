@@ -10,7 +10,7 @@ services:
       placement:
         constraints: [node.role == manager]
     networks:
-      - wcms-net
+      - fg-net
     volumes:
       - "/d1/infra/docker/registry:/var/lib/registry"
 
@@ -25,7 +25,7 @@ services:
       placement:
         constraints: [node.role == manager]
     networks:
-      - wcms-net
+      - fg-net
 
 #  nginx:
 #    image: "seokjoon/all:ami.wcms.v3.2"
