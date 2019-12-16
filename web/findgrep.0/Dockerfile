@@ -5,6 +5,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 ## nginx & php
 RUN apt-get update && apt-get -y install php7.2 php7.2-fpm php7.2-gd php7.2-mysql mysql-client php7.2-curl php7.2-xml php-mbstring php-zip nginx && apt-get clean
+RUN rm /etc/nginx/sites-available/default
+ADD default /etc/nginx/sites-available/default
 
 ## timezone KST
 WORKDIR /etc/php/7.2/fpm
