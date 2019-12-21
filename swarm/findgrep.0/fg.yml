@@ -68,9 +68,14 @@ services:
     networks:
       - fg-net
     volumes:
-      - "/d1/app/www/80/conf/etc/nginx/ssl:/etc/nginx/ssl"
-      - "/d1/app/www/80/log:/var/log/nginx"
-      - "/d1/app/www/80/:/var/www"
+      - "/d1/app/www/80/conf/nginx:/etc/nginx"
+      - "/d1/app/www/80/log/nginx:/var/log/nginx"
+      - "/d1/app/www/80/www:/var/www"
+      - "/d1/app/www/etc/letsencript:/etc/letsencript"
+      - "/d1/app/www/var/lib/letsencript:/var/lib/letsencript"
+#      - "/d1/app/www/80/conf/etc/nginx/ssl:/etc/nginx/ssl"
+#      - "/d1/app/www/80/log:/var/log/nginx"
+#      - "/d1/app/www/80/:/var/www"
 
 networks:
   fg-net:
