@@ -1,4 +1,4 @@
-FROM ubuntu:19.04
+FROM ubuntu:18.04
 MAINTAINER Seok Joon Lee <seokjoon@gmail.com>
 
 ENV DEBIAN_FRONTEND=noninteractive
