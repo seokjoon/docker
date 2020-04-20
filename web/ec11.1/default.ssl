@@ -25,6 +25,8 @@ server {
         location ~ /\.ht {
                 deny all;
         }
+
+        client_max_body_size 11M;
 }
 
 server {
@@ -54,6 +56,8 @@ server {
         location ~ /\.ht {
                 deny all;
         }
+
+        client_max_body_size 11M;
 
         ######## ssl BEGIN
         ssl                  on;
