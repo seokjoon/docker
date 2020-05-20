@@ -4,7 +4,7 @@ MAINTAINER Seok Joon Lee <seokjoon@gmail.com>
 ENV DEBIAN_FRONTEND=noninteractive
 
 ## nginx & php
-RUN apt-get update && apt-get -y install php7.2 php7.2-fpm php7.2-gd php7.2-mysql mysql-client php7.2-curl php7.2-xml php-mbstring php-zip php-redis php-phpseclib nginx && apt-get clean
+RUN apt-get update && apt-get -y install php7.2 php7.2-fpm php7.2-gd php7.2-mysql mysql-client php7.2-curl php7.2-xml php-mbstring php-zip php-redis nginx && apt-get clean
 RUN rm /etc/nginx/sites-available/default
 ADD default /etc/nginx/sites-available/default
 
