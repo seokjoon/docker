@@ -79,5 +79,5 @@ services:
 #      - "/d1/app/www/80/:/var/www"
 
 networks:
-  fg-net:
+  mr-net:
     external: true
