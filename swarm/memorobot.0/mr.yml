@@ -53,8 +53,8 @@ services:
       - "/d1/db/mysql57/conf:/etc/mysql/conf.d"
 
   nginx:
-    image: "52.78.100.77:5000/memorobot.0"
-    # image: "localhost:5000/memorobot.0"
+    image: "52.78.100.77:5000/memorobot:0"
+    # image: "localhost:5000/memorobot:0"
     deploy:
       replicas: 2
       placement:
