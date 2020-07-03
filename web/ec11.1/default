@@ -10,6 +10,13 @@ server {
 
         location / {
                 try_files $uri $uri/ /index.php?$query_string;
+
+                ######## timeout BEGIN
+                proxy_connect_timeout 1200;
+                proxy_send_timeout 1200;
+                proxy_read_timeout 1200;
+                send_timeout 1200;
+                ######## timeout END
         }
 
         location ~ \.php$ {
@@ -20,11 +27,17 @@ server {
                 fastcgi_index index.php;
                 fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
                 include fastcgi_params;
+
+                ######## timeout BEGIN
+                fastcgi_read_timeout 1200;
+                ######## timeout END
         }
 
         location ~ /\.ht {
                 deny all;
         }
 
+        ######## file upload size BEGIN
         client_max_body_size 11M;
+        ######## file upload size END
 }
