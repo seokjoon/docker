@@ -4,7 +4,8 @@ MAINTAINER Seok Joon Lee <seokjoon@gmail.com>
 USER root
 
 ## php
-RUN apt-get update && apt-get -y install php7.0 php7.0-fpm php7.0-gd php7.0-mysql mysql-client php7.0-curl php7.0-xml php-mbstring php-zip php-bcmath php-redis && apt-get clean
+RUN apt-get install ca-certificates apt-transport-https && wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add - && echo "deb https://packages.sury.org/php/ stretch main" | tee /etc/apt/sources.list.d/php.list
+RUN apt-get update && apt-get -y install php7.2 php7.2-fpm php7.2-gd php7.2-mysql mysql-client php7.2-curl php7.2-xml php7.2-mbstring php7.2-zip php7.2-bcmath php-redis && apt-get clean
 
 ## composer
 RUN apt-get -y install curl && apt-get clean && curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/bin/composer
