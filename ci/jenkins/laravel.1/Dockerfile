@@ -5,6 +5,7 @@ USER root
 
 ##
 RUN apt-get update && apt-get install -y sudo rsync && apt-get clean
+RUN printf 'jenkins ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 ## php
 RUN apt-get install ca-certificates apt-transport-https && wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add - && echo "deb https://packages.sury.org/php/ stretch main" | tee /etc/apt/sources.list.d/php.list
