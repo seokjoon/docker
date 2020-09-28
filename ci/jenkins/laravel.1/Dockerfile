@@ -4,7 +4,7 @@ MAINTAINER Seok Joon Lee <seokjoon@gmail.com>
 USER root
 
 ##
-RUN apt-get install sudo
+RUN apt-get install sudo rsync
 
 ## php
 RUN apt-get install ca-certificates apt-transport-https && wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add - && echo "deb https://packages.sury.org/php/ stretch main" | tee /etc/apt/sources.list.d/php.list
