@@ -11,8 +11,8 @@ ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ## build path
 ADD path /path
 
-
-CMD ["/bin/bash", "-c", "/path/gradlew build && java -jar /path/build/libs/gs-spring-boot-docker-0.1.0.jar"]
+WORKDIR /path
+CMD ["/bin/bash", "-c", "./gradlew build && java -jar build/libs/gs-spring-boot-docker-0.1.0.jar"]
 
 
 EXPOSE 80

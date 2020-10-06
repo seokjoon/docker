@@ -11,7 +11,7 @@ public class Application {
 
   @RequestMapping("/")
   public String home() {
-    return "Hello Docker World";
+    return "Hello Docker World - Spring Boot v2.3.0";
   }
 
   public static void main(String[] args) {
