@@ -1,0 +1,13 @@
+
+//카카오 비즈메시지 BmAgent 개선 모듈 배포 (2019.10.02)
+
+* DBScript/BmAgent.sql 수정
+ - 요청 테이블 REQ_TIME 컬럼 추가 (row 등록 시간)
+ - 결과 테이블 REQ_TIME, SEND_TIME, RECV_TIME 컬럼 추가
+   (요청 테이블 row 등록 시간, Agent 요청, 응답 시간) 
+ 
+* BmAgent.jar 수정
+ - 로그, select / insert 쿼리 value 추가
+ - 요청 / 응답 시간 관련 코드 추가
+
+※ 기 배포된 가맹점은 BmAgent.sql(기 생성된 테이블에 컬럼 추가), BmAgent.jar 를 교체하셔야 합니다.
