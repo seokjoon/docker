@@ -28,5 +28,7 @@ CMD ["/bin/bash", "-c", "/usr/sbin/service php7.4-fpm start && nginx -g 'daemon 
 
 
 EXPOSE 80
+EXPOSE 8080
 EXPOSE 443
 EXPOSE 6001
+EXPOSE 8887
