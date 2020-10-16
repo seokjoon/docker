@@ -18,8 +18,6 @@ WORKDIR /BmAgent
 CMD ["/bin/bash", "-c", "java -classpath ./BmAgent_lib/*:./BmAgent.jar bm.Agent start"]
 
 
-
-
 #!/bin/sh
 #JAVA_HOME=/usr/jdk/jdk1.6.0_29/bin/java
 #export JAVA_HOME
