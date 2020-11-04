@@ -6,8 +6,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 ## nginx & php
 RUN apt-get update && apt-get -y install php7.4 php7.4-fpm php7.4-gd php7.4-mysql mysql-client php7.4-curl php7.4-xml php-mbstring php-zip php-bcmath php-redis nginx && apt-get clean
 RUN rm /etc/nginx/sites-available/default
-ADD default /etc/nginx/sites-available/default
-# ADD default.ssl /etc/nginx/sites-available/default
+# ADD default /etc/nginx/sites-available/default
+ADD default.ssl /etc/nginx/sites-available/default
 
 ## timezone KST
 WORKDIR /etc/php/7.4/fpm
