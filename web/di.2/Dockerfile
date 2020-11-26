@@ -19,6 +19,12 @@ RUN sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 11M/g" php.ini
 RUN sed -i "s/post_max_size = 8M/post_max_size = 60M/g" php.ini
 RUN sed -i "s/max_execution_time = 30/max_execution_time = 300/g" php.ini
 
+## inicis
+WORKDIR /etc/php/7.4
+ADD icertsecu.so /usr/lib/php/20190902/icertsecu.so
+ADD icertsecu.ini mods-available/icertsecu.ini
+RUN cd fpm/conf.d && ln -s /etc/php/7.4/mods-available/icertsecu.ini ./20-icertsecu.ini
+
 ## nginx: GET url length limit: upstream sent too big header while reading
 WORKDIR /etc/nginx
 RUN sed -i "/^http {/a fastcgi_buffers 16 16k;" nginx.conf
