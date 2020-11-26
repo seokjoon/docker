@@ -23,6 +23,7 @@ WORKDIR /etc/php/7.4
 ADD icertsecu.so /usr/lib/php/20190902/icertsecu.so
 ADD icertsecu.ini mods-available/icertsecu.ini
 RUN cd fpm/conf.d && ln -s /etc/php/7.4/mods-available/icertsecu.ini ./20-icertsecu.ini
+RUN sed -i "s/enable_dl = Off/enable_dl = On/g" fpm/php.ini
 
 ## nginx: GET url length limit: upstream sent too big header while reading
 WORKDIR /etc/nginx
