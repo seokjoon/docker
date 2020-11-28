@@ -33,8 +33,8 @@ RUN sed -i "/^fastcgi_buffers 16 16k;/a fastcgi_buffer_size 32k;" nginx.conf
 ## supervisor
 RUN apt-get update && apt-get install -y supervisor && apt-get clean
 RUN mkdir -p /var/log/supervisor
-COPY supervisord.conf /etc/supervisor/supervisord.conf
-COPY di-queue-work.conf /etc/supervisor/conf.d/di-queue-work.conf
+ADD supervisord.conf /etc/supervisor/supervisord.conf
+ADD di-queue-work.conf /etc/supervisor/conf.d/di-queue-work.conf
 
 
 # CMD ["/bin/bash", "-c", "/usr/sbin/service php7.4-fpm start && nginx -g 'daemon off;'"]
