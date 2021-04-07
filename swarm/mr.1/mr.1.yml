@@ -1,0 +1,71 @@
+version: "3"
+
+services:
+
+  redis:
+    container_name: das-redis
+    image: redis
+    restart: unless-stopped
+    ports:
+      - 6379:6379
+    volumes:
+      - "/d1/db/redis/data:/data"
+    entrypoint: redis-server --appendonly yes
+    networks:
+      - mr-net
+
+  mysql:
+    image: mysql:5.7
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+    ports:
+      - 3306:3306
+    networks:
+      - mr-net
+    command:
+      - "--connect_timeout=600"
+      - "--innodb_buffer_pool_size=128M"
+      - "--interactive_timeout=3600"
+      - "--max_allowed_packet=128M"
+      - "--net_read_timeout=600"
+      - "--net_write_timeout=600"
+      - "--wait_timeout=3600"
+    volumes:
+      - /d1/db/mysql57/data:/var/lib/mysql
+      - /d1/db/mysql57/log:/var/log/mysql
+    restart: unless-stopped
+    environment:
+      - MYSQL_DATABASE=mr
+      - MYSQL_USER=homestead
+      - MYSQL_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=secret
+      # - MYSQL_ALLOW_EMPTY_PASSWORD=1
+
+  nginx:
+    image: "seokjoon/all:mr.1"
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+    depends_on:
+      - mysql
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - mr-net
+    volumes:
+      - etc/localtime:/etc/localtime:ro
+      - /d1/app/www/80/log/nginx:/var/log/nginx
+      - /d1/app/www/80/www:/var/www
+      - /d1/app/www/etc/letsencrypt:/etc/letsencrypt
+      - /d1/app/www/var/lib/letsencrypt:/var/lib/letsencrypt
+    restart: unless-stopped
+
+networks:
+  mr-net:
+    external: true
