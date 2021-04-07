@@ -42,7 +42,7 @@ services:
       # - MYSQL_ALLOW_EMPTY_PASSWORD=1
 
   nginx:
-    image: "seokjoon/all:mr.1"
+    image: seokjoon/all:mr.1
     deploy:
       replicas: 1
       placement:
