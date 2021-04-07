@@ -4,7 +4,6 @@ services:
 
   redis:
     image: redis
-    restart: unless-stopped
     ports:
       - 6379:6379
     volumes:
@@ -35,7 +34,6 @@ services:
     volumes:
       - /d1/db/mysql57/data:/var/lib/mysql
       - /d1/db/mysql57/log:/var/log/mysql
-    restart: unless-stopped
     environment:
       - MYSQL_DATABASE=mr
       - MYSQL_USER=homestead
@@ -58,12 +56,11 @@ services:
     networks:
       - mr-net
     volumes:
-      - etc/localtime:/etc/localtime:ro
+      - /etc/localtime:/etc/localtime:ro
       - /d1/app/www/80/log/nginx:/var/log/nginx
       - /d1/app/www/80/www:/var/www
       - /d1/app/www/etc/letsencrypt:/etc/letsencrypt
       - /d1/app/www/var/lib/letsencrypt:/var/lib/letsencrypt
-    restart: unless-stopped
 
 networks:
   mr-net:
