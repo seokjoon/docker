@@ -57,7 +57,7 @@ services:
       - mr-net
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /d1/app/www/80.log/nginx:/var/log/nginx
+      - /d1/app/www/80Log/nginx:/var/log/nginx
       - /d1/app/www/80:/var/www
       - /d1/app/www/etc/letsencrypt:/etc/letsencrypt
       - /d1/app/www/var/lib/letsencrypt:/var/lib/letsencrypt
