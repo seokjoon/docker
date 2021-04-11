@@ -10,9 +10,9 @@ services:
       - /d1/db/redis/data:/data
     entrypoint: redis-server --appendonly yes
     networks:
-      - mr-net
+      - mr
 
-  mysql:
+  mysql57:
     image: mysql:5.7
     deploy:
       replicas: 1
@@ -22,8 +22,10 @@ services:
     ports:
       - 3306:3306
     networks:
-      - mr-net
+      - mr
     command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
       - --connect_timeout=600
       - --innodb_buffer_pool_size=128M
       - --interactive_timeout=3600
@@ -36,9 +38,9 @@ services:
       - /d1/db/mysql57/log:/var/log/mysql
     environment:
       - MYSQL_DATABASE=mr
-      - MYSQL_USER=homestead
-      - MYSQL_PASSWORD=secret
-      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=passwd
+      - MYSQL_ROOT_PASSWORD=passwd
       # - MYSQL_ALLOW_EMPTY_PASSWORD=1
 
   nginx:
@@ -49,12 +51,13 @@ services:
         constraints:
           - node.role == manager
     depends_on:
-      - mysql
+      - redis
+      - mysql57
     ports:
       - 80:80
       - 443:443
     networks:
-      - mr-net
+      - mr
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /d1/app/www/80Log/nginx:/var/log/nginx
@@ -63,5 +66,5 @@ services:
       - /d1/app/www/var/lib/letsencrypt:/var/lib/letsencrypt
 
 networks:
-  mr-net:
+  mr:
     external: true
