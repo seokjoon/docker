@@ -51,10 +51,10 @@ server {
 
         ######## ssl BEGIN
         # ssl                  on;
-        ssl_certificate /etc/nginx/ssl/certificate.crt;
-        ssl_certificate_key /etc/nginx/ssl/private.key;
-        ## ssl_certificate /etc/letsencrypt/live/daabisanswer.com/fullchain.pem;
-        ## ssl_certificate_key /etc/letsencrypt/live/daabisanswer.com/privkey.pem;
+        ## ssl_certificate /etc/nginx/ssl/certificate.crt;
+        ## ssl_certificate_key /etc/nginx/ssl/private.key;
+        ssl_certificate /etc/letsencrypt/live/daabisanswer.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/daabisanswer.com/privkey.pem;
         ssl_session_timeout  5m;
         ssl_protocols  SSLv2 SSLv3 TLSv1 TLSv1.1 TLSv1.2;
         ssl_ciphers  HIGH:!aNULL:!MD5;
