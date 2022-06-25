@@ -1,9 +1,6 @@
-FROM seokjoon:ubuntu2204
+FROM seokjoon/ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
-
-# https://stackoverflow.com/questions/71941032/why-i-cannot-run-apt-update-inside-a-fresh-ubuntu22-04
-RUN sed -i -e 's/^APT/# APT/' -e 's/^DPkg/# DPkg/' /etc/apt/apt.conf.d/docker-clean
 
 ## nginx & php
 RUN apt-get update && apt-get -y install \
