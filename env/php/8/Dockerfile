@@ -1,10 +1,22 @@
-FROM ubuntu:jammy-20220101
-MAINTAINER Seok Joon Lee <seokjoon@gmail.com>
+FROM seokjoon:ubuntu2204
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+# https://stackoverflow.com/questions/71941032/why-i-cannot-run-apt-update-inside-a-fresh-ubuntu22-04
+RUN sed -i -e 's/^APT/# APT/' -e 's/^DPkg/# DPkg/' /etc/apt/apt.conf.d/docker-clean
+
 ## nginx & php
-RUN apt-get update && apt-get -y install php8.1 php8.1-fpm php8.1-gd php8.1-mysql mysql-client php8.1-curl php8.1-xml php-mbstring php-zip php-bcmath php-redis nginx && apt-get clean
+RUN apt-get update && apt-get -y install \
+    composer \
+    curl \
+    mysql-client \
+    php8.1 php8.1-fpm php8.1-cli \
+    php-bcmath php8.1-curl php8.1-gd php-mbstring php-zip php8.1-xml \
+    php8.1-mysql mysql-client \
+    php-redis \
+    nginx \
+    && apt-get clean
+
 RUN rm /etc/nginx/sites-available/default
 ADD default /etc/nginx/sites-available/default
 # ADD default.ssl /etc/nginx/sites-available/default
