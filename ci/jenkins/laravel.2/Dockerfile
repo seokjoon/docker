@@ -4,7 +4,7 @@ MAINTAINER Seok Joon Lee <seokjoon@gmail.com>
 USER root
 
 ##
-RUN apt-get update && apt-get install -y sudo rsync && apt-get clean
+RUN apt-get update && apt-get install -y sudo rsync wget && apt-get clean
 RUN printf 'jenkins ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 ## php
@@ -22,7 +22,7 @@ RUN apt-get update && apt-get -y install \
 # RUN apt-get -y install curl && apt-get clean && curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/bin/composer
 
 ## nodejs
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get -y install build-essential nodejs && apt-get clean
 
 USER jenkins
