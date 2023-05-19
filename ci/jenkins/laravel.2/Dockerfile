@@ -15,7 +15,7 @@ RUN apt-get update && apt-get -y install \
     php8.1-mysql default-mysql-client \
     php8.1-gd php8.1-curl php8.1-xml php8.1-mbstring php8.1-zip php8.1-bcmath \
     php-redis \
-    php-dev \
+    php-dev php-pear \
     composer \
     && apt-get clean
 
